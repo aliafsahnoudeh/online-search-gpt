@@ -74,7 +74,7 @@ class GPTInvestigator:
         self.source_urls = []
 
         if self.verbose:
-            await stream_output("logs", f"🔎 Starting the research task for '{self.query}'...", self.websocket)
+            await stream_output("logs", f"🔎 Starting the search for '{self.query}'...", self.websocket)
         
         # Generate Agent
         if not (self.agent and self.role):
@@ -104,14 +104,14 @@ class GPTInvestigator:
 
     async def write_report(self):
         """
-        Writes the report based on research conducted
+        Writes the result
 
         Returns:
             str: The report
         """
 
         if self.verbose:
-            await stream_output("logs", f"✍️ Writing summary for research task: {self.query}...", self.websocket)
+            await stream_output("logs", f"✍️ Writing summary for the search: {self.query}...", self.websocket)
             
         return await generate_report(
                 query=self.query,
@@ -145,7 +145,7 @@ class GPTInvestigator:
         context = []
         # Generate Sub-Queries including original query
         sub_queries = await get_sub_queries(query=query, agent_role_prompt=self.role,
-                                            cfg=self.cfg, parent_query=self.parent_query,
+                                            cfg=self.cfg,
                                             cost_callback=self.add_costs)
 
         if self.verbose:

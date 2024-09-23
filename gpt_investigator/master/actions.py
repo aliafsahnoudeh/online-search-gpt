@@ -134,7 +134,6 @@ async def get_sub_queries(
     query: str,
     agent_role_prompt: str,
     cfg,
-    parent_query: str,
     cost_callback: callable = None,
 ):
     """
@@ -143,7 +142,6 @@ async def get_sub_queries(
         query: original query
         agent_role_prompt: agent role prompt
         cfg: Config
-        parent_query:
         cost_callback:
 
     Returns:

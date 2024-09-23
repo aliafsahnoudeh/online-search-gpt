@@ -1,7 +1,5 @@
 const GPTInvestigator = (() => {
     const init = () => {
-      // Not sure, but I think it would be better to add event handlers here instead of in the HTML
-      //document.getElementById("startSearch").addEventListener("click", startSearch);
       document.getElementById("copyToClipboard").addEventListener("click", copyToClipboard);
 
       updateState("initial");
@@ -37,13 +35,11 @@ const GPTInvestigator = (() => {
   
       socket.onopen = (event) => {
         const task = document.querySelector('input[name="task"]').value;
-        const report_type = document.querySelector('select[name="report_type"]').value;
         const report_source = document.querySelector('select[name="report_source"]').value;
         const agent = document.querySelector('input[name="agent"]:checked').value;
   
         const requestData = {
           task: task,
-          report_type: report_type,
           report_source: report_source,
           agent: agent,
         };
@@ -126,8 +122,6 @@ const GPTInvestigator = (() => {
      */
     const setReportActionsStatus = (status) => {
       const reportActions = document.getElementById("reportActions");
-      // Disable everything in reportActions until search is finished
-
       if (status == "enabled") {
         reportActions.querySelectorAll("a").forEach((link) => {
           link.classList.remove("disabled");

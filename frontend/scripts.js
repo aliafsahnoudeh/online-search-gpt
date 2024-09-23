@@ -1,7 +1,5 @@
 const GPTInvestigator = (() => {
     const init = () => {
-      // Not sure, but I think it would be better to add event handlers here instead of in the HTML
-      //document.getElementById("startSearch").addEventListener("click", startSearch);
       document.getElementById("copyToClipboard").addEventListener("click", copyToClipboard);
 
       updateState("initial");
@@ -124,8 +122,6 @@ const GPTInvestigator = (() => {
      */
     const setReportActionsStatus = (status) => {
       const reportActions = document.getElementById("reportActions");
-      // Disable everything in reportActions until search is finished
-
       if (status == "enabled") {
         reportActions.querySelectorAll("a").forEach((link) => {
           link.classList.remove("disabled");
